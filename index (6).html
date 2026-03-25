@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BuildBharat — Apps, Websites & AI for Indian Businesses</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇮🇳</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07080c;--card:#0f1118;--saffron:#ff6b00;--saffron-lt:#ff8a3d;--blue:#2563eb;--cyan:#06b6d4;--green:#22c55e;--purple:#a855f7;--txt:#f1f5f9;--txt2:#94a3b8;--muted:#64748b;--border:#1a1d2e;--isaffron:#FF9933;--igreen:#138808}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--txt);overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:5px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--saffron);border-radius:3px}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:9999}
+nav{position:fixed;top:0;left:0;right:0;z-index:1000;padding:1rem 2rem;background:rgba(7,8,12,.88);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,107,0,.08);display:flex;justify-content:space-between;align-items:center}
+.logo{font-family:'Space Mono',monospace;font-size:1.3rem;font-weight:700;letter-spacing:-.5px;display:flex;align-items:center;gap:.4rem}
+.logo .build{background:linear-gradient(135deg,var(--isaffron),var(--saffron));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo .bharat{background:linear-gradient(135deg,#fff,var(--igreen));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.logo .flag{font-size:1.1rem;margin-left:.3rem;-webkit-text-fill-color:initial}
+.nav-links{display:flex;gap:2rem;align-items:center}
+.nav-links a{color:var(--txt2);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .3s;letter-spacing:.5px}
+.nav-links a:hover{color:var(--txt)}
+.nav-cta{background:linear-gradient(135deg,var(--saffron),var(--saffron-lt))!important;color:#fff!important;padding:.6rem 1.5rem;border-radius:100px;font-weight:600!important;transition:transform .3s,box-shadow .3s!important}
+.nav-cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(255,107,0,.3)}
+.hamburger{display:none;background:none;border:none;color:var(--txt);font-size:1.5rem;cursor:pointer}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:8rem 2rem 4rem;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;width:900px;height:900px;background:radial-gradient(circle,rgba(255,107,0,.06) 0%,transparent 65%);top:-300px;right:-200px;animation:drift 10s ease-in-out infinite}
+.hero::after{content:'';position:absolute;width:700px;height:700px;background:radial-gradient(circle,rgba(19,136,8,.05) 0%,transparent 65%);bottom:-200px;left:-150px;animation:drift 12s ease-in-out infinite reverse}
+@keyframes drift{0%,100%{transform:scale(1) translate(0,0)}50%{transform:scale(1.15) translate(20px,-20px)}}
+.hero-badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(255,107,0,.08);border:1px solid rgba(255,107,0,.2);padding:.5rem 1.25rem;border-radius:100px;font-size:.82rem;color:var(--isaffron);margin-bottom:2rem;font-weight:600;animation:slideUp .7s ease;letter-spacing:.5px}
+.hero-badge .dot{width:8px;height:8px;background:var(--green);border-radius:50%;animation:blink 2s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.launch-badge{background:linear-gradient(135deg,rgba(255,107,0,.15),rgba(255,153,51,.1));border:1px solid rgba(255,107,0,.3);color:var(--isaffron);padding:.3rem .9rem;border-radius:100px;font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;display:inline-block;animation:glow 2s infinite}
+@keyframes glow{0%,100%{box-shadow:0 0 8px rgba(255,107,0,.2)}50%{box-shadow:0 0 20px rgba(255,107,0,.4)}}
+.hero h1{font-size:clamp(2.6rem,7vw,5.5rem);font-weight:900;line-height:1.05;margin-bottom:1.5rem;letter-spacing:-2.5px;animation:slideUp .7s ease .1s both;position:relative;z-index:1}
+.gradient-saffron{background:linear-gradient(135deg,var(--isaffron),var(--saffron),#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-size:200% auto;animation:shimmer 5s linear infinite}
+@keyframes shimmer{0%{background-position:0% center}100%{background-position:200% center}}
+.hero p{font-size:1.15rem;color:var(--txt2);max-width:580px;margin-bottom:2.5rem;animation:slideUp .7s ease .2s both;position:relative;z-index:1}
+.hero-buttons{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;animation:slideUp .7s ease .3s both;position:relative;z-index:1}
+@keyframes slideUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.btn-primary{background:linear-gradient(135deg,var(--saffron),var(--saffron-lt));color:#fff;padding:1rem 2.5rem;border:none;border-radius:100px;font-size:1.05rem;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(255,107,0,.35)}
+.btn-whatsapp{background:#25D366;color:#fff;padding:1rem 2.5rem;border:none;border-radius:100px;font-size:1.05rem;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem}
+.btn-whatsapp:hover{transform:translateY(-3px);box-shadow:0 12px 40px rgba(37,211,102,.3);background:#20bd5a}
+.btn-secondary{background:transparent;color:var(--txt);padding:1rem 2.5rem;border:1.5px solid var(--border);border-radius:100px;font-size:1.05rem;font-weight:600;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .3s;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem}
+.btn-secondary:hover{border-color:var(--saffron);background:rgba(255,107,0,.05);transform:translateY(-3px)}
+.stats-bar{display:flex;justify-content:center;gap:4rem;padding:3rem 2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);flex-wrap:wrap}
+.stat{text-align:center}.stat-number{font-family:'Space Mono',monospace;font-size:2.2rem;font-weight:700;background:linear-gradient(135deg,var(--isaffron),var(--saffron-lt));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.stat-label{color:var(--muted);font-size:.82rem;margin-top:.25rem;text-transform:uppercase;letter-spacing:1.5px;font-weight:500}
+section{padding:6rem 2rem;max-width:1200px;margin:0 auto}
+.section-label{font-family:'Space Mono',monospace;font-size:.78rem;color:var(--isaffron);text-transform:uppercase;letter-spacing:3px;margin-bottom:1rem}
+.section-title{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-1px;margin-bottom:1rem}
+.section-subtitle{color:var(--txt2);font-size:1.1rem;max-width:600px;margin-bottom:3rem}
+.services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5rem}
+.service-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2.5rem;transition:all .4s cubic-bezier(.175,.885,.32,1.275);position:relative;overflow:hidden}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--isaffron),var(--saffron-lt));opacity:0;transition:opacity .3s}
+.service-card:hover{transform:translateY(-8px);border-color:rgba(255,107,0,.25);box-shadow:0 20px 60px rgba(0,0,0,.4)}
+.service-card:hover::before{opacity:1}
+.service-icon{width:56px;height:56px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.6rem;margin-bottom:1.5rem}
+.service-card h3{font-size:1.3rem;font-weight:700;margin-bottom:.75rem}
+.service-card p{color:var(--txt2);font-size:.95rem;line-height:1.7}
+.service-tag{display:inline-block;margin-top:1rem;padding:.3rem .9rem;border-radius:100px;font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:1px}
+.pricing-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
+.pricing-card{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:2.5rem;transition:all .4s;position:relative}
+.pricing-card.featured{border-color:var(--saffron);background:linear-gradient(170deg,rgba(255,107,0,.06),var(--card));transform:scale(1.03)}
+.pricing-card:hover{transform:translateY(-6px);box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.pricing-card.featured:hover{transform:scale(1.03) translateY(-6px)}
+.pricing-label{font-size:.78rem;text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:.5rem}
+.pricing-card h3{font-size:1.5rem;font-weight:800;margin-bottom:.5rem}
+.pricing-desc{color:var(--txt2);font-size:.9rem;margin-bottom:1.5rem}
+.price{font-family:'Space Mono',monospace;font-size:2.6rem;font-weight:700;margin-bottom:.25rem}
+.price .rupee{font-size:1.6rem;vertical-align:top}
+.price .period{font-size:.85rem;color:var(--muted);font-weight:400;font-family:'Outfit',sans-serif}
+.price-old{color:var(--muted);font-size:1rem;text-decoration:line-through;font-family:'Space Mono',monospace;margin-bottom:.25rem}
+.pricing-note{color:var(--muted);font-size:.8rem;margin-bottom:1.5rem}
+.pricing-features{list-style:none;margin-bottom:2rem}
+.pricing-features li{padding:.5rem 0;color:var(--txt2);font-size:.9rem;display:flex;align-items:flex-start;gap:.75rem}
+.pricing-features li::before{content:'✓';color:var(--green);font-weight:700;flex-shrink:0}
+.popular-badge{position:absolute;top:-1px;right:2rem;background:linear-gradient(135deg,var(--saffron),var(--saffron-lt));color:#fff;padding:.4rem 1rem;border-radius:0 0 10px 10px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:1.5px}
+.pricing-btn{width:100%;padding:1rem;border-radius:14px;font-size:1rem;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .3s;text-decoration:none;display:block;text-align:center}
+.pricing-btn-primary{background:linear-gradient(135deg,var(--saffron),var(--saffron-lt));color:#fff;border:none}
+.pricing-btn-primary:hover{box-shadow:0 8px 30px rgba(255,107,0,.35);transform:translateY(-2px)}
+.pricing-btn-outline{background:transparent;border:1.5px solid var(--border);color:var(--txt)}
+.pricing-btn-outline:hover{border-color:var(--saffron);background:rgba(255,107,0,.05)}
+.process-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-top:2rem}
+.process-card{text-align:center;padding:2rem 1.5rem}
+.process-number{font-family:'Space Mono',monospace;font-size:4rem;font-weight:700;color:rgba(255,107,0,.1);line-height:1;margin-bottom:1rem}
+.process-card h3{font-size:1.15rem;font-weight:700;margin-bottom:.5rem}
+.process-card p{color:var(--txt2);font-size:.9rem}
+.addons-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem;margin-top:2rem}
+.addon-card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:all .3s;display:flex;gap:1rem;align-items:flex-start}
+.addon-card:hover{border-color:rgba(255,107,0,.25);transform:translateY(-4px)}
+.addon-icon{font-size:1.5rem;flex-shrink:0;width:44px;height:44px;display:flex;align-items:center;justify-content:center;background:rgba(255,107,0,.08);border-radius:12px}
+.addon-card h4{font-size:1rem;font-weight:700;margin-bottom:.25rem}
+.addon-card p{color:var(--txt2);font-size:.85rem}
+.addon-price{color:var(--isaffron);font-family:'Space Mono',monospace;font-weight:700;font-size:.85rem;margin-top:.4rem}
+.contact-section{max-width:700px;margin:0 auto;padding:6rem 2rem;text-align:center}
+.contact-form{background:var(--card);border:1px solid var(--border);border-radius:24px;padding:3rem;margin-top:2rem;text-align:left}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem}
+.form-group{margin-bottom:1rem}
+.form-group label{display:block;font-size:.85rem;font-weight:600;color:var(--txt2);margin-bottom:.4rem}
+.form-group input,.form-group textarea,.form-group select{width:100%;padding:.85rem 1rem;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:12px;color:var(--txt);font-family:'Outfit',sans-serif;font-size:.95rem;transition:border-color .3s;outline:none}
+.form-group input:focus,.form-group textarea:focus,.form-group select:focus{border-color:var(--saffron)}
+.form-group textarea{resize:vertical;min-height:100px}
+.form-group select option{background:var(--card);color:var(--txt)}
+.submit-btn{width:100%;padding:1rem;background:linear-gradient(135deg,var(--saffron),var(--saffron-lt));color:#fff;border:none;border-radius:14px;font-size:1.05rem;font-weight:700;cursor:pointer;font-family:'Outfit',sans-serif;transition:all .3s;margin-top:.5rem}
+.submit-btn:hover{box-shadow:0 8px 30px rgba(255,107,0,.35);transform:translateY(-2px)}
+.form-note{text-align:center;color:var(--muted);font-size:.82rem;margin-top:1rem}
+.testimonials-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.5rem;margin-top:2rem}
+.testimonial-card{background:var(--card);border:1px solid var(--border);border-radius:20px;padding:2rem}
+.testimonial-stars{color:var(--isaffron);font-size:1rem;margin-bottom:1rem;letter-spacing:2px}
+.testimonial-text{color:var(--txt2);font-size:.95rem;font-style:italic;margin-bottom:1.25rem;line-height:1.7}
+.testimonial-author{display:flex;align-items:center;gap:.75rem}
+.testimonial-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--isaffron),var(--saffron));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.9rem}
+.testimonial-name{font-weight:600;font-size:.9rem}
+.testimonial-role{color:var(--muted);font-size:.8rem}
+.cta-section{text-align:center;padding:6rem 2rem;position:relative;overflow:hidden}
+.cta-section::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,transparent,rgba(255,107,0,.04),transparent)}
+.cta-section h2{font-size:clamp(2rem,4vw,3.2rem);font-weight:900;letter-spacing:-1.5px;margin-bottom:1rem;position:relative}
+.cta-section p{color:var(--txt2);font-size:1.1rem;max-width:500px;margin:0 auto 2rem;position:relative}
+footer{border-top:1px solid var(--border);padding:3rem 2rem;max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.footer-left p{color:var(--muted);font-size:.85rem;margin-top:.5rem}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{color:var(--txt2);text-decoration:none;font-size:.9rem;transition:color .3s}
+.footer-links a:hover{color:var(--txt)}
+.fab-whatsapp{position:fixed;bottom:2rem;right:2rem;width:62px;height:62px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 8px 30px rgba(37,211,102,.4);transition:all .3s;z-index:999;animation:waPulse 3s infinite}
+.fab-whatsapp:hover{transform:scale(1.12);box-shadow:0 12px 40px rgba(37,211,102,.5)}
+.fab-whatsapp svg{width:32px;height:32px;fill:#fff}
+@keyframes waPulse{0%,100%{box-shadow:0 8px 30px rgba(37,211,102,.4)}50%{box-shadow:0 8px 45px rgba(37,211,102,.6)}}
+@media(max-width:768px){.nav-links{display:none}.hamburger{display:block}.nav-links.open{display:flex;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:rgba(7,8,12,.97);padding:2rem;gap:1.5rem;border-bottom:1px solid var(--border)}.stats-bar{gap:2rem}.services-grid,.pricing-grid,.addons-grid,.testimonials-row{grid-template-columns:1fr}.pricing-card.featured{transform:none}.pricing-card.featured:hover{transform:translateY(-6px)}.hero h1{letter-spacing:-1px}section{padding:4rem 1.5rem}.process-grid{grid-template-columns:repeat(2,1fr)}.form-row{grid-template-columns:1fr}.contact-form{padding:2rem 1.5rem}}
+</style>
+</head>
+<body>
+<nav>
+<div class="logo"><span class="build">Build</span><span class="bharat">Bharat</span><span class="flag">🇮🇳</span></div>
+<div class="nav-links" id="navLinks"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#process">Process</a><a href="#addons">Add-ons</a><a href="#contact" class="nav-cta">Contact Us →</a></div>
+<button class="hamburger" onclick="document.getElementById('navLinks').classList.toggle('open')">☰</button>
+</nav>
+
+<section class="hero">
+<div class="hero-badge"><span class="dot"></span> Now accepting projects across India</div>
+<h1>We Build <span class="gradient-saffron">Digital India</span><br>One Business at a Time</h1>
+<p>Mobile apps, websites & AI automation for small businesses, coaching centres & schools. Affordable. Fast. Made in India, for India.</p>
+<div class="hero-buttons">
+<a href="#contact" class="btn-primary">📩 Contact Us — We'll Call You</a>
+<a href="https://wa.me/353831415961?text=Hi%20BuildBharat!%20I%27m%20interested%20in%20building%20an%20app%2Fwebsite%20for%20my%20business." class="btn-whatsapp" target="_blank">💬 WhatsApp Us</a>
+</div>
+</section>
+
+<div class="stats-bar">
+<div class="stat"><div class="stat-number">5+</div><div class="stat-label">Products Shipped</div></div>
+<div class="stat"><div class="stat-number">6 yrs</div><div class="stat-label">Tech Experience</div></div>
+<div class="stat"><div class="stat-number">100%</div><div class="stat-label">Owner-Operated</div></div>
+<div class="stat"><div class="stat-number">AI</div><div class="stat-label">First Approach</div></div>
+</div>
+
+<section id="services">
+<div class="section-label">// What We Build</div>
+<h2 class="section-title">Services</h2>
+<p class="section-subtitle">End-to-end digital solutions. No outsourcing, no middlemen. You talk to the builder.</p>
+<div class="services-grid">
+<div class="service-card"><div class="service-icon" style="background:rgba(255,107,0,.08);color:var(--saffron)">📱</div><h3>Mobile App Development</h3><p>Android & iOS apps with real-time features, push notifications, GPS tracking, and UPI/Razorpay payments. Launch-ready for Play Store & App Store.</p><span class="service-tag" style="background:rgba(255,107,0,.08);color:var(--saffron)">React Native · Expo</span></div>
+<div class="service-card"><div class="service-icon" style="background:rgba(168,85,247,.08);color:var(--purple)">🌐</div><h3>Business Websites</h3><p>Fast, responsive websites and landing pages. SEO-optimized, mobile-first, and designed to convert visitors into paying customers.</p><span class="service-tag" style="background:rgba(168,85,247,.08);color:var(--purple)">React · Next.js · SEO</span></div>
+<div class="service-card"><div class="service-icon" style="background:rgba(37,211,102,.08);color:#25D366">🤖</div><h3>AI Chatbots & Automation</h3><p>WhatsApp & website chatbots, automated workflows, AI customer support. Reduce manual work by 60% and respond to customers 24/7.</p><span class="service-tag" style="background:rgba(37,211,102,.08);color:#25D366">AI · WhatsApp · Automation</span></div>
+<div class="service-card"><div class="service-icon" style="background:rgba(6,182,212,.08);color:var(--cyan)">🎓</div><h3>Education Tech Solutions</h3><p>Custom apps for coaching centres, tuition classes & schools — student management, attendance, fee collection, online tests & parent portals.</p><span class="service-tag" style="background:rgba(6,182,212,.08);color:var(--cyan)">EdTech · SaaS · Portals</span></div>
+<div class="service-card"><div class="service-icon" style="background:rgba(34,197,94,.08);color:var(--green)">💳</div><h3>Payments & E-Commerce</h3><p>Razorpay, Paytm, UPI integration. Online stores, subscription billing, invoicing systems — complete digital payment flows for Indian businesses.</p><span class="service-tag" style="background:rgba(34,197,94,.08);color:var(--green)">Razorpay · UPI · Payments</span></div>
+<div class="service-card"><div class="service-icon" style="background:rgba(37,99,235,.08);color:var(--blue)">📊</div><h3>AI Strategy & Consulting</h3><p>Not sure where to start with AI? We audit your operations, find automation opportunities, and deliver a clear roadmap with ROI projections.</p><span class="service-tag" style="background:rgba(37,99,235,.08);color:var(--blue)">Strategy · Audit · Roadmap</span></div>
+</div>
+</section>
+
+<section id="pricing">
+<div class="section-label">// Transparent Pricing</div>
+<h2 class="section-title">Plans That Fit Your Budget</h2>
+<p class="section-subtitle">No hidden costs. Clear deliverables. Milestone payments. All prices exclusive of GST.</p>
+<div style="text-align:center;margin-bottom:1rem"><span class="launch-badge">🚀 Limited Launch Pricing — Lock These Rates Before They Go Up</span></div>
+<div class="pricing-grid">
+<div class="pricing-card">
+<div class="pricing-label" style="color:var(--cyan)">Starter</div><h3>Business Website</h3>
+<p class="pricing-desc">For shops, freelancers & local businesses going online for the first time.</p>
+<div class="price-old">₹24,999</div><div class="price"><span class="rupee">₹</span>14,999 <span class="period">one-time</span></div>
+<p class="pricing-note">Delivery in 7–10 days</p>
+<ul class="pricing-features"><li>Up to 5 responsive pages</li><li>Mobile-optimized design</li><li>Contact form + WhatsApp button</li><li>Basic SEO setup</li><li>Google Maps integration</li><li>1 month free maintenance</li></ul>
+<a href="#contact" class="pricing-btn pricing-btn-outline">Get Started →</a>
+</div>
+<div class="pricing-card featured">
+<div class="popular-badge">Most Popular</div>
+<div class="pricing-label" style="color:var(--saffron)">Pro</div><h3>Custom App / Platform</h3>
+<p class="pricing-desc">For growing businesses that need a mobile app or web platform.</p>
+<div class="price-old">₹79,999</div><div class="price"><span class="rupee">₹</span>49,999 <span class="period">starting at</span></div>
+<p class="pricing-note">Delivery in 3–5 weeks</p>
+<ul class="pricing-features"><li>Android + iOS app (React Native)</li><li>Admin dashboard</li><li>User auth, profiles & notifications</li><li>Razorpay / UPI payment integration</li><li>Play Store / App Store submission</li><li>3 months maintenance & support</li><li>2 rounds of revisions</li></ul>
+<a href="#contact" class="pricing-btn pricing-btn-primary">Get Started →</a>
+</div>
+<div class="pricing-card">
+<div class="pricing-label" style="color:var(--isaffron)">Enterprise</div><h3>Full Digital Suite</h3>
+<p class="pricing-desc">Complete transformation — app + website + AI + automation.</p>
+<div class="price-old">₹2,49,999</div><div class="price"><span class="rupee">₹</span>1,49,999 <span class="period">starting at</span></div>
+<p class="pricing-note">Delivery in 6–10 weeks</p>
+<ul class="pricing-features"><li>Everything in Pro plan</li><li>Custom website + mobile app</li><li>AI chatbot (WhatsApp / Web)</li><li>Full business automation setup</li><li>Analytics & reporting dashboard</li><li>6 months priority support</li><li>Dedicated project manager</li><li>Unlimited revisions</li></ul>
+<a href="#contact" class="pricing-btn pricing-btn-outline">Let's Talk →</a>
+</div>
+</div>
+</section>
+
+<section id="process">
+<div class="section-label">// How It Works</div>
+<h2 class="section-title">Simple. Fast. No Drama.</h2>
+<p class="section-subtitle">From your first message to a live product — here's the journey.</p>
+<div class="process-grid">
+<div class="process-card"><div class="process-number">01</div><h3>Tell Us Your Idea</h3><p>Fill the contact form or WhatsApp us. We reply within 24 hours with a free consultation call.</p></div>
+<div class="process-card"><div class="process-number">02</div><h3>Get a Clear Proposal</h3><p>Scope, timeline, and quote — no jargon, no surprises. You approve, we start building.</p></div>
+<div class="process-card"><div class="process-number">03</div><h3>We Build It</h3><p>Weekly updates with live demos. You see progress in real-time. Feedback goes in instantly.</p></div>
+<div class="process-card"><div class="process-number">04</div><h3>Launch & Support</h3><p>We deploy, test, and hand over everything. Post-launch support included — you're never stuck.</p></div>
+</div>
+</section>
+
+<section id="addons">
+<div class="section-label">// Power-Ups</div>
+<h2 class="section-title">Add-On Services</h2>
+<p class="section-subtitle">Supercharge any plan with these extras.</p>
+<div class="addons-grid">
+<div class="addon-card"><div class="addon-icon">🤖</div><div><h4>WhatsApp AI Chatbot</h4><p>24/7 auto-replies, lead capture, order updates</p><div class="addon-price">From ₹9,999</div></div></div>
+<div class="addon-card"><div class="addon-icon">📧</div><div><h4>Email Automation</h4><p>Drip campaigns, follow-ups, newsletter setup</p><div class="addon-price">From ₹4,999</div></div></div>
+<div class="addon-card"><div class="addon-icon">🔍</div><div><h4>Advanced SEO Package</h4><p>Keyword research, on-page SEO, Google Business</p><div class="addon-price">From ₹7,999</div></div></div>
+<div class="addon-card"><div class="addon-icon">📱</div><div><h4>Social Media Setup</h4><p>Instagram, LinkedIn branding + 10 post designs</p><div class="addon-price">From ₹5,999</div></div></div>
+<div class="addon-card"><div class="addon-icon">🛡️</div><div><h4>Monthly Maintenance</h4><p>Updates, bug fixes, hosting management</p><div class="addon-price">₹2,999/month</div></div></div>
+<div class="addon-card"><div class="addon-icon">⚡</div><div><h4>AI Strategy Report</h4><p>Full business audit + automation roadmap</p><div class="addon-price">From ₹14,999</div></div></div>
+</div>
+</section>
+
+<section>
+<div class="section-label">// Trust</div>
+<h2 class="section-title">What Our Clients Say</h2>
+<div class="testimonials-row">
+<div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"BuildBharat understood our coaching centre's needs perfectly. The student management app saves us 3 hours daily. Parents love the fee payment feature!"</p><div class="testimonial-author"><div class="testimonial-avatar">RK</div><div><div class="testimonial-name">Rajesh K.</div><div class="testimonial-role">Coaching Centre Owner, Pune</div></div></div></div>
+<div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"We needed a simple website with online ordering. Got it in 8 days flat. The WhatsApp integration was a game-changer for our bakery."</p><div class="testimonial-author"><div class="testimonial-avatar">PS</div><div><div class="testimonial-name">Priya S.</div><div class="testimonial-role">Bakery Owner, Delhi NCR</div></div></div></div>
+<div class="testimonial-card"><div class="testimonial-stars">★★★★★</div><p class="testimonial-text">"The AI automation report showed us exactly where we were wasting time. They didn't just point problems — they built the solutions. Highly recommend."</p><div class="testimonial-author"><div class="testimonial-avatar">AM</div><div><div class="testimonial-name">Ankit M.</div><div class="testimonial-role">Logistics Startup, Mumbai</div></div></div></div>
+</div>
+</section>
+
+<section class="contact-section" id="contact">
+<div class="section-label" style="text-align:center">// Get In Touch</div>
+<h2 class="section-title" style="text-align:center">Tell Us What You Need.<br>We'll <span class="gradient-saffron">Call You Back</span>.</h2>
+<p class="section-subtitle" style="text-align:center;margin:0 auto 0">Share your details and we'll reach out within 24 hours with a free consultation.</p>
+<form class="contact-form" id="contactForm" action="https://formsubmit.co/arpitrsharma007@gmail.com" method="POST">
+<input type="hidden" name="_subject" value="🇮🇳 New BuildBharat Inquiry!">
+<input type="hidden" name="_captcha" value="false">
+<input type="hidden" name="_template" value="table">
+<input type="hidden" name="_next" value="https://build-bharat-xi.vercel.app/#thankyou">
+<input type="text" name="_honey" style="display:none">
+<div class="form-row">
+<div class="form-group"><label>Your Name *</label><input type="text" name="Name" placeholder="E.g., Rajesh Gupta" required></div>
+<div class="form-group"><label>Business Name</label><input type="text" name="Business" placeholder="E.g., Gupta Coaching Centre"></div>
+</div>
+<div class="form-row">
+<div class="form-group"><label>Email *</label><input type="email" name="Email" placeholder="your@email.com" required></div>
+<div class="form-group"><label>Phone / WhatsApp *</label><input type="tel" name="Phone" placeholder="+91 98765 43210" required></div>
+</div>
+<div class="form-group"><label>What do you need?</label>
+<select name="Service"><option value="">Select a service...</option><option value="Business Website (₹14,999)">Business Website (from ₹14,999)</option><option value="Mobile App (₹49,999)">Mobile App (from ₹49,999)</option><option value="Full Digital Suite (₹1,49,999)">Full Digital Suite (from ₹1,49,999)</option><option value="AI Chatbot / Automation">AI Chatbot / Automation</option><option value="Education / Coaching App">Education / Coaching App</option><option value="Something else">Something else</option></select>
+</div>
+<div class="form-group"><label>Tell us more about your project</label><textarea name="Message" placeholder="Describe your idea, requirements, or any specific features you need..."></textarea></div>
+<button type="submit" class="submit-btn">📩 Submit — We'll Call You Within 24hrs</button>
+<p class="form-note">Or WhatsApp us directly for a faster response →</p>
+</form>
+</section>
+
+<section id="thankyou" style="display:none;text-align:center;padding:4rem 2rem">
+<div style="font-size:4rem;margin-bottom:1rem">✅</div>
+<h2 class="section-title">Thank You!</h2>
+<p class="section-subtitle" style="margin:0 auto">Your inquiry has been received. We'll call you within 24 hours.</p>
+<a href="https://wa.me/353831415961?text=Hi!%20I%20just%20submitted%20a%20form%20on%20BuildBharat." class="btn-whatsapp" target="_blank" style="margin-top:1.5rem">💬 WhatsApp Us Now</a>
+</section>
+
+<section class="cta-section">
+<h2>Ready to Go<br><span class="gradient-saffron">Digital?</span></h2>
+<p>Every big business started with one bold step. Take yours today.</p>
+<div class="hero-buttons">
+<a href="#contact" class="btn-primary">📩 Contact Us</a>
+<a href="https://wa.me/353831415961?text=Hi%20BuildBharat!%20I%27m%20interested%20in%20building%20something." class="btn-whatsapp" target="_blank">💬 WhatsApp Us</a>
+</div>
+</section>
+
+<footer>
+<div class="footer-left"><div class="logo"><span class="build">Build</span><span class="bharat">Bharat</span><span class="flag">🇮🇳</span></div><p>Founded by Arpit Sharma · Powered by AI · Made in India 🇮🇳</p></div>
+<div class="footer-links"><a href="mailto:arpitrsharma007@gmail.com">Email</a><a href="https://wa.me/353831415961" target="_blank">WhatsApp</a><a href="https://linkedin.com/in/arpitrsharma007" target="_blank">LinkedIn</a><a href="https://instagram.com/arpit.vibecode" target="_blank">Instagram</a><a href="https://github.com/arpitrsharma007-code" target="_blank">GitHub</a></div>
+</footer>
+
+<a href="https://wa.me/353831415961?text=Hi%20BuildBharat!%20I%20have%20a%20project%20inquiry." class="fab-whatsapp" target="_blank" title="Chat on WhatsApp">
+<svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting){e.target.style.opacity='1';e.target.style.transform='translateY(0)'}})},{threshold:.1});
+document.querySelectorAll('.service-card,.pricing-card,.process-card,.addon-card,.testimonial-card,.contact-form').forEach(el=>{el.style.opacity='0';el.style.transform='translateY(30px)';el.style.transition='opacity .6s ease,transform .6s ease';observer.observe(el)});
+document.querySelectorAll('.nav-links a').forEach(a=>a.addEventListener('click',()=>document.getElementById('navLinks').classList.remove('open')));
+if(window.location.hash==='#thankyou'){document.getElementById('thankyou').style.display='block'}
+</script>
+</body>
+</html>
